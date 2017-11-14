@@ -34,6 +34,7 @@ $(function() {
   // var timeout = 300
   var rowElements = $('.dustContainer > div')
   var rows = $('.dustContainer > div').length
+  var zoom = 1
 
   function changeState(f) {
     state = !state
@@ -135,6 +136,22 @@ $(function() {
 
   $('#lag').on('click', function() {
     changeState(2)
+  })
+
+  $('#zoomIn').on('click', function() {
+    if (zoom <= 2) {
+      zoom = zoom + 1
+    }
+
+    $('.dustContainer').css('transform', 'scale(' + zoom + ')')
+  })
+
+  $('#zoomOut').on('click', function() {
+    if (zoom != 1) {
+      zoom = zoom - 1
+    }
+
+    $('.dustContainer').css('transform', 'scale(' + zoom + ')')
   })
 
   changeState(1)
