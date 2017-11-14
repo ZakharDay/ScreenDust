@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 183 183">
+  <title>Dust-Particles-03</title>
+  <g>
+    <rect x="160" y="71" width="5" height="41" transform="translate(254 -71) rotate(90)"/>
+    <rect x="18" y="71" width="5" height="41" transform="translate(112 71) rotate(90)"/>
+    <rect x="89" width="5" height="41"/>
+    <rect x="89" y="142" width="5" height="41"/>
+    <rect x="139.2" y="20.8" width="5" height="41" transform="translate(70.7 -88.11) rotate(45)"/>
+    <rect x="38.8" y="121.2" width="5" height="41" transform="translate(112.3 12.3) rotate(45)"/>
+    <rect x="38.8" y="20.8" width="5" height="41" transform="translate(-17.11 41.3) rotate(-45)"/>
+    <rect x="139.2" y="121.2" width="5" height="41" transform="translate(-58.7 141.7) rotate(-45)"/>
+  </g>
+</svg>

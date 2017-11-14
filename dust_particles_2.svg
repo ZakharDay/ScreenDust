@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 183 183">
+  <title>Dust-Particles-03</title>
+  <g>
+    <rect x="89" y="36" width="5" height="111"/>
+    <rect x="89" y="36" width="5" height="111" transform="translate(183 0) rotate(90)"/>
+    <rect x="89" y="36" width="5" height="111" transform="translate(91.5 -37.9) rotate(45)"/>
+    <rect x="89" y="36" width="5" height="111" transform="translate(220.9 91.5) rotate(135)"/>
+  </g>
+</svg>
