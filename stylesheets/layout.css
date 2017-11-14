@@ -1,5 +1,12 @@
 @media print {
   * { -webkit-print-color-adjust: exact; }
+  .screen { display: none; }
+  .print  { display: block; }
+}
+
+@media screen {
+  .screen { display: block; }
+  .print  { display: none; }
 }
 
 * {
@@ -120,12 +127,15 @@ body {
   border: 2px solid black;
 }
 
-.statisticsWrapper aside div {
+.statisticsWrapper aside > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 33.33333333%;
   height: 36px;
 }
 
-.statisticsWrapper aside div:nth-child(1),
-.statisticsWrapper aside div:nth-child(2) {
+.statisticsWrapper aside > div:nth-child(1),
+.statisticsWrapper aside > div:nth-child(2) {
   border-right: 2px solid black;
 }

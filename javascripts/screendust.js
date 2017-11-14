@@ -100,6 +100,13 @@ $(function() {
       }
     })
 
+    var empty =    $('.dustContainer > div > div:not(".s1"):not(".s2"):not(".s3")').length
+    var born =     $('.s1').length
+    var explode =  $('.s3').length
+    $('#a').text('Empty (A): ' + empty)
+    $('#b').text('Born (B): ' + born)
+    $('#c').text('Explode (C): ' + explode)
+
     if (state) {
       if (Date.now() >= (timestamp + timeout)) {
         setTimeout(function() { markToBlow() }, timeout)
