@@ -28,8 +28,6 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-
-
 $(function() {
   // var timeout = 300
   var rowElements = $('.dustContainer > div')
@@ -72,17 +70,7 @@ $(function() {
   }
 
   function cycle(f) {
-    var now = Date.now().toString()
-    var timestampArray = [
-      now.slice(0,  2),
-      now.slice(2,  4),
-      now.slice(4,  6),
-      now.slice(6,  8),
-      now.slice(8,  10),
-      now.slice(10, 12)
-    ]
-
-    $('#timestamp').text('Timestamp: ' + timestampArray.join(':'))
+    $('#timestamp').text(timestampText())
 
     $('div').each(function() {
       if (style == 'now') {
@@ -101,12 +89,13 @@ $(function() {
       }
     })
 
-    var empty =    $('.dustContainer > div > div:not(".s1"):not(".s2"):not(".s3")').length
-    var born =     $('.s1').length
-    var explode =  $('.s3').length
-    $('#a').text('Empty (A): ' + empty)
-    $('#b').text('Born (B): ' + born)
-    $('#c').text('Explode (C): ' + explode)
+    var empty   = $('.dustContainer > div > div:not(".s1"):not(".s2"):not(".s3")').length
+    var born    = $('.s1').length.toString()
+    var explode = $('.s3').length.toString()
+
+    $('#a').text('Empty (A): '   + prefixZero(empty))
+    $('#b').text('Born (B): '    + prefixZero(born))
+    $('#c').text('Explode (C): ' + prefixZero(explode))
 
     if (state) {
       if (Date.now() >= (timestamp + timeout)) {
@@ -116,6 +105,37 @@ $(function() {
 
       setTimeout(function() { cycle() }, speed)
     }
+  }
+
+  function timestampText() {
+    var date        = new Date
+    var year        = date.getFullYear().toString().slice(2, 4)
+    var month       = date.getMonth() + 1
+    var day         = date.getDate()
+    var hour        = date.getHours()
+    var minute      = date.getMinutes()
+    var second      = date.getSeconds().toString()
+    var millisecond = date.getMilliseconds().toString().slice(0, 2)
+
+    month       = prefixZero(month)
+    day         = prefixZero(day)
+    hour        = prefixZero(hour)
+    minute      = prefixZero(minute)
+    second      = prefixZero(second)
+    millisecond = prefixZero(millisecond)
+
+    var timestampArray = [year, month, day, hour, minute, second, millisecond]
+    var text = 'Timestamp: ' + timestampArray.join(':')
+
+    return text
+  }
+
+  function prefixZero(s) {
+    if (s.length == 1) {
+      s = '0' + s
+    }
+
+    return s
   }
 
   function blow(particle) {
@@ -130,9 +150,9 @@ $(function() {
     }
   }
 
-  $('#now').on('click', function() {
-    changeState(1)
-  })
+  // $('#now').on('click', function() {
+  //   changeState(1)
+  // })
 
   $('#lag').on('click', function() {
     changeState(2)
@@ -154,5 +174,5 @@ $(function() {
     $('.dustContainer').css('transform', 'scale(' + zoom + ')')
   })
 
-  changeState(1)
+  changeState(2)
 })
