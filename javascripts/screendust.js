@@ -27,7 +27,6 @@ function getRandomIntInclusive(min, max) {
 }
 
 $(function() {
-  // var timeout = 300
   var rowElements = $('.dustContainer > div')
   var rows = $('.dustContainer > div').length
   var zoom = 1
@@ -71,29 +70,15 @@ $(function() {
     $('#timestamp').text(timestampText())
 
     $('div').each(function() {
-      if (style == 'now') {
-        // console.log('now')
-        blow($(this))
-      } else if (style == 'lag') {
-        // console.log('lag')
-        var rand = getRandomIntInclusive(50, 300)
-        var self = this
+      var rand = getRandomIntInclusive(50, 300)
+      var self = this
 
-        function trigerBlow() {
-          blow($(self))
-        }
-
-        setTimeout(function() { trigerBlow() }, rand)
+      function trigerBlow() {
+        blow($(self))
       }
+
+      setTimeout(function() { trigerBlow() }, rand)
     })
-
-    var empty   = $('.dustContainer > div > div:not(".s1"):not(".s2"):not(".s3")').length
-    var born    = $('.s1').length.toString()
-    var explode = $('.s3').length.toString()
-
-    $('#a').text('Empty (A): '   + prefixZero(empty))
-    $('#b').text('Born (B): '    + prefixZero(born))
-    $('#c').text('Explode (C): ' + prefixZero(explode))
 
     if (state) {
       if (Date.now() >= (timestamp + timeout)) {
@@ -103,15 +88,17 @@ $(function() {
 
       setTimeout(function() { cycle() }, speed)
     }
+
+    updateCounters()
   }
 
   function timestampText() {
     var date        = new Date
     var year        = date.getFullYear().toString().slice(2, 4)
-    var month       = date.getMonth() + 1
-    var day         = date.getDate()
-    var hour        = date.getHours()
-    var minute      = date.getMinutes()
+    var month       = (date.getMonth() + 1).toString()
+    var day         = date.getDate().toString()
+    var hour        = date.getHours().toString()
+    var minute      = date.getMinutes().toString()
     var second      = date.getSeconds().toString()
     var millisecond = date.getMilliseconds().toString().slice(0, 2)
 
@@ -148,11 +135,23 @@ $(function() {
     }
   }
 
-  // $('#now').on('click', function() {
-  //   changeState(1)
-  // })
+  function updateCounters() {
+    var empty   = $('.dustContainer > div > div:not(".s1"):not(".s2"):not(".s3")').length
+    var born    = $('.s1').length.toString()
+    var explode = $('.s3').length.toString()
 
-  $('#lag').on('click', function() {
+    $('#a').text('Empty (A): '   + prefixZero(empty))
+    $('#b').text('Born (B): '    + prefixZero(born))
+    $('#c').text('Explode (C): ' + prefixZero(explode))
+  }
+
+  $('#stop').on('click', function() {
+    var count = 6
+
+    count.times(function(i) {
+      setTimeout(function() { updateCounters() }, (i + 1) * 100)
+    })
+
     changeState(2)
   })
 
