@@ -14,8 +14,6 @@ if (!Date.now) {
   }
 }
 
-
-
 var timeout = 300
 var speed = 50
 var style = 'now'

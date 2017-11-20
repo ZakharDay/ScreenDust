@@ -15,10 +15,10 @@ body {
   font-family: 'PT Mono', monospace;
 }
 
-.dustWrapper {
+/*.dustWrapper {
   width: 98vw;
   height: 96vh;
-}
+}*/
 
 .zoomWrapper {
   display: flex;
@@ -108,6 +108,11 @@ body {
   .s2 { background-image: url(../images/dust_particles_5.svg) !important; }
   .s3 { background-image: url(../images/dust_particles_6.svg) !important; }
 
+  .dustWrapper {
+    width: 98vw;
+    height: 96vh;
+  }
+
   .zoomWrapper,
   .statisticsWrapper aside {
     border: 1px solid black;
@@ -146,6 +151,17 @@ body {
   .s1 { background-image: url(../images/dust_particles_7.svg) !important; }
   .s2 { background-image: url(../images/dust_particles_8.svg) !important; }
   .s3 { background-image: url(../images/dust_particles_9.svg) !important; }
+
+  .printPreloader {
+    position: absolute;
+    top: -20000px;
+    left: -20000px;
+  }
+
+  .dustWrapper {
+    width: calc(100% - 80px);
+    height: calc(100% - 80px);
+  }
 
   .zoomWrapper,
   .statisticsWrapper aside {
