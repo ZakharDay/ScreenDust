@@ -79,6 +79,7 @@ body {
 }
 
 #logo {
+  display: block;
   width: 360px;
   background-size: 230px;
   background-repeat: no-repeat;
